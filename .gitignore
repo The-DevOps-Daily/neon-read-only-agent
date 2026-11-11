@@ -1,0 +1,9 @@
+node_modules/
+.env
+.state.json
+results/*.lock
+# Raw CLI or API output can hold role passwords and connection strings.
+# Scripts write only redacted output to results/; never commit raw dumps.
+results/raw/
+*.raw.txt
+*.raw.json

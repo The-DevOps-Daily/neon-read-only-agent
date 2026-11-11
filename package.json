@@ -1,0 +1,30 @@
+{
+  "name": "neon-read-only-agent",
+  "version": "1.0.0",
+  "description": "Measure what a Neon read_only role and the Neon MCP Server read-only mode still let an agent do to a Lakebase Postgres branch. Real Neon project, staged scripts, stamped results.",
+  "type": "module",
+  "private": true,
+  "license": "MIT",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "project": "node scripts/01-project.mjs",
+    "seed": "node scripts/02-seed.mjs",
+    "roles": "bash scripts/03-roles.sh",
+    "matrix": "node scripts/04-matrix.mjs",
+    "lock-stall": "node scripts/05-lock-stall.mjs",
+    "cost": "node scripts/06-cost.mjs",
+    "drift": "node scripts/07-drift.mjs",
+    "harden": "node scripts/08-harden.mjs",
+    "rerun": "bash scripts/09-rerun.sh",
+    "summarize": "node scripts/10-summarize.mjs",
+    "verify-stamps": "node scripts/11-verify-stamps.mjs",
+    "test": "node --test test/*.test.mjs",
+    "teardown": "node scripts/99-teardown.mjs"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "1.22.0",
+    "pg": "8.16.3"
+  }
+}
