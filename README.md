@@ -48,6 +48,7 @@ It creates and deletes ONE throwaway Neon project. Every results file is stamped
 - `num_cpus()` rounds the compute's vCPU limit up to a whole number, so the cost figures are upper bounds.
 - Traces: durable writes (audit rows, large objects, role settings) and `NOTIFY` delivery are checked from an owner session in every setup. Temp tables and session advisory locks are checked inside the probe's own session only on the direct connection (S1). On the MCP setups each `run_sql` is a separate request, so those two traces are recorded from a successful call (a `CREATE TEMP TABLE` that succeeded, a `pg_advisory_lock()` that returned) and are inferences, not observations.
 - `npm run compare` (`scripts/compare-matrix-runs.mjs`) checks the final matrix against the older runs in `results/discarded/`.
+- A correction to a comment in `schema/harden.sql`: it says NOTIFY and advisory locks are not privilege-controlled. That is true of the `NOTIFY` statement. `pg_notify()` and the advisory-lock functions run on the `EXECUTE` that `PUBLIC` holds on built-in functions; the hardening revokes `EXECUTE` only in the `app` schema. The file is left as it was run, because it is part of every stamp.
 
 See the write-up: TODO(post-url)
 GitHub: TODO(repo-url)
