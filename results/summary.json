@@ -1,0 +1,618 @@
+{
+  "generatedAt": "2026-11-11T09:14:12.976Z",
+  "probeCount": 40,
+  "runSqlTransactionOffered": {
+    "S2": false,
+    "S3": false,
+    "S4": true
+  },
+  "setups": {
+    "S1": {
+      "allowed": 23,
+      "denied": 17,
+      "persisted": 9,
+      "mismatches": []
+    },
+    "S2": {
+      "allowed": 21,
+      "denied": 19,
+      "persisted": 3,
+      "mismatches": []
+    },
+    "S3": {
+      "allowed": 18,
+      "denied": 22,
+      "persisted": 3,
+      "mismatches": []
+    },
+    "S4": {
+      "allowed": 27,
+      "denied": 13,
+      "persisted": 8,
+      "mismatches": []
+    }
+  },
+  "headline": {
+    "s1AllowedOf40": "23 of 40",
+    "s1PersistentWrites": 9
+  },
+  "s1Leftovers": [
+    {
+      "id": "create_temp_table",
+      "group": "temp",
+      "outcome": "persisted"
+    },
+    {
+      "id": "temp_table_as_select",
+      "group": "temp",
+      "outcome": "persisted"
+    },
+    {
+      "id": "secdef_write",
+      "group": "execute",
+      "outcome": "persisted"
+    },
+    {
+      "id": "read_function_source",
+      "group": "disclosure",
+      "outcome": "accepted"
+    },
+    {
+      "id": "read_all_emails",
+      "group": "disclosure",
+      "outcome": "accepted"
+    },
+    {
+      "id": "enumerate_roles",
+      "group": "disclosure",
+      "outcome": "accepted"
+    },
+    {
+      "id": "notify_statement",
+      "group": "notify",
+      "outcome": "persisted"
+    },
+    {
+      "id": "pg_notify_function",
+      "group": "notify",
+      "outcome": "persisted"
+    },
+    {
+      "id": "advisory_lock_session",
+      "group": "advisory locks",
+      "outcome": "persisted"
+    },
+    {
+      "id": "advisory_xact_lock",
+      "group": "advisory locks",
+      "outcome": "accepted"
+    },
+    {
+      "id": "try_advisory_lock",
+      "group": "advisory locks",
+      "outcome": "accepted"
+    },
+    {
+      "id": "large_object_create",
+      "group": "large objects",
+      "outcome": "persisted"
+    },
+    {
+      "id": "read_other_session_queries",
+      "group": "visibility",
+      "outcome": "accepted"
+    },
+    {
+      "id": "set_statement_timeout_zero",
+      "group": "session settings",
+      "outcome": "accepted"
+    },
+    {
+      "id": "set_work_mem_high",
+      "group": "session settings",
+      "outcome": "accepted"
+    },
+    {
+      "id": "alter_role_self_guc",
+      "group": "session settings",
+      "outcome": "persisted"
+    },
+    {
+      "id": "explain_analyze_secdef",
+      "group": "execute",
+      "outcome": "persisted"
+    },
+    {
+      "id": "unbounded_aggregate",
+      "group": "resource",
+      "outcome": "accepted"
+    },
+    {
+      "id": "listen_channel",
+      "group": "notify",
+      "outcome": "accepted"
+    },
+    {
+      "id": "advisory_unlock_all",
+      "group": "advisory locks",
+      "outcome": "accepted"
+    },
+    {
+      "id": "show_search_path",
+      "group": "visibility",
+      "outcome": "accepted"
+    },
+    {
+      "id": "read_pg_settings",
+      "group": "visibility",
+      "outcome": "accepted"
+    },
+    {
+      "id": "reset_all_settings",
+      "group": "session settings",
+      "outcome": "accepted"
+    }
+  ],
+  "s1Writes": [
+    {
+      "id": "create_temp_table",
+      "group": "temp",
+      "effect": "temp"
+    },
+    {
+      "id": "temp_table_as_select",
+      "group": "temp",
+      "effect": "temp"
+    },
+    {
+      "id": "secdef_write",
+      "group": "execute",
+      "effect": "audit"
+    },
+    {
+      "id": "notify_statement",
+      "group": "notify",
+      "effect": "notify"
+    },
+    {
+      "id": "pg_notify_function",
+      "group": "notify",
+      "effect": "notify"
+    },
+    {
+      "id": "advisory_lock_session",
+      "group": "advisory locks",
+      "effect": "advisory"
+    },
+    {
+      "id": "large_object_create",
+      "group": "large objects",
+      "effect": "largeobject"
+    },
+    {
+      "id": "alter_role_self_guc",
+      "group": "session settings",
+      "effect": "rolesetting"
+    },
+    {
+      "id": "explain_analyze_secdef",
+      "group": "execute",
+      "effect": "audit"
+    }
+  ],
+  "effectKinds": {
+    "S1": {
+      "durable": [
+        "secdef_write",
+        "large_object_create",
+        "alter_role_self_guc",
+        "explain_analyze_secdef"
+      ],
+      "session": [
+        "create_temp_table",
+        "temp_table_as_select",
+        "advisory_lock_session"
+      ],
+      "signal": [
+        "notify_statement",
+        "pg_notify_function"
+      ]
+    },
+    "S2": {
+      "durable": [],
+      "session": [
+        "advisory_lock_session"
+      ],
+      "signal": [
+        "notify_statement",
+        "pg_notify_function"
+      ]
+    },
+    "S3": {
+      "durable": [],
+      "session": [
+        "advisory_lock_session"
+      ],
+      "signal": [
+        "notify_statement",
+        "pg_notify_function"
+      ]
+    },
+    "S4": {
+      "durable": [
+        "secdef_write",
+        "large_object_create",
+        "explain_analyze_secdef"
+      ],
+      "session": [
+        "create_temp_table",
+        "temp_table_as_select",
+        "advisory_lock_session"
+      ],
+      "signal": [
+        "notify_statement",
+        "pg_notify_function"
+      ]
+    }
+  },
+  "hardening": {
+    "flipped": [
+      {
+        "id": "create_temp_table",
+        "group": "temp",
+        "hardenedSqlstate": "42501"
+      },
+      {
+        "id": "temp_table_as_select",
+        "group": "temp",
+        "hardenedSqlstate": "42501"
+      },
+      {
+        "id": "secdef_write",
+        "group": "execute",
+        "hardenedSqlstate": "42501"
+      },
+      {
+        "id": "explain_analyze_secdef",
+        "group": "execute",
+        "hardenedSqlstate": "42501"
+      }
+    ],
+    "stayedOpen": [
+      {
+        "id": "read_function_source",
+        "group": "disclosure"
+      },
+      {
+        "id": "read_all_emails",
+        "group": "disclosure"
+      },
+      {
+        "id": "enumerate_roles",
+        "group": "disclosure"
+      },
+      {
+        "id": "notify_statement",
+        "group": "notify"
+      },
+      {
+        "id": "pg_notify_function",
+        "group": "notify"
+      },
+      {
+        "id": "advisory_lock_session",
+        "group": "advisory locks"
+      },
+      {
+        "id": "advisory_xact_lock",
+        "group": "advisory locks"
+      },
+      {
+        "id": "try_advisory_lock",
+        "group": "advisory locks"
+      },
+      {
+        "id": "large_object_create",
+        "group": "large objects"
+      },
+      {
+        "id": "read_other_session_queries",
+        "group": "visibility"
+      },
+      {
+        "id": "set_statement_timeout_zero",
+        "group": "session settings"
+      },
+      {
+        "id": "set_work_mem_high",
+        "group": "session settings"
+      },
+      {
+        "id": "alter_role_self_guc",
+        "group": "session settings"
+      },
+      {
+        "id": "unbounded_aggregate",
+        "group": "resource"
+      },
+      {
+        "id": "listen_channel",
+        "group": "notify"
+      },
+      {
+        "id": "advisory_unlock_all",
+        "group": "advisory locks"
+      },
+      {
+        "id": "show_search_path",
+        "group": "visibility"
+      },
+      {
+        "id": "read_pg_settings",
+        "group": "visibility"
+      },
+      {
+        "id": "reset_all_settings",
+        "group": "session settings"
+      }
+    ]
+  },
+  "lockStall": {
+    "primary": {
+      "runs": 3,
+      "migrationMs": {
+        "median": 12434,
+        "range": [
+          11324,
+          12803
+        ]
+      },
+      "migrationOk": true,
+      "stallP99": {
+        "median": 12388,
+        "range": [
+          11291,
+          12703
+        ]
+      },
+      "stallMax": {
+        "median": 12388
+      },
+      "worstInsertMs": {
+        "median": 12388,
+        "range": [
+          11291,
+          12703
+        ]
+      },
+      "overOneSecond": [
+        4,
+        4,
+        4
+      ],
+      "writesInWindow": [
+        4,
+        4,
+        4
+      ],
+      "readsOk": 3,
+      "baselineP50": 162,
+      "maxWaitingBackends": 5
+    },
+    "replica": {
+      "runs": 3,
+      "migrationMs": {
+        "median": 157,
+        "range": [
+          143,
+          158
+        ]
+      },
+      "migrationOk": true,
+      "stallP99": {
+        "median": 160,
+        "range": [
+          155,
+          160
+        ]
+      },
+      "stallMax": {
+        "median": 160
+      },
+      "worstInsertMs": {
+        "median": 171,
+        "range": [
+          166,
+          514
+        ]
+      },
+      "overOneSecond": [
+        0,
+        0,
+        0
+      ],
+      "writesInWindow": [
+        4,
+        3,
+        3
+      ],
+      "readsOk": 3,
+      "baselineP50": 146,
+      "maxWaitingBackends": 0
+    },
+    "lock_timeout": {
+      "runs": 3,
+      "migrationMs": {
+        "median": 2129,
+        "range": [
+          2125,
+          2132
+        ]
+      },
+      "migrationOk": false,
+      "migrationState": "55P03",
+      "stallP99": {
+        "median": 2085,
+        "range": [
+          2021,
+          2104
+        ]
+      },
+      "stallMax": {
+        "median": 2085
+      },
+      "worstInsertMs": {
+        "median": 2085,
+        "range": [
+          2021,
+          2104
+        ]
+      },
+      "overOneSecond": [
+        4,
+        4,
+        4
+      ],
+      "writesInWindow": [
+        4,
+        4,
+        4
+      ],
+      "readsOk": 3,
+      "baselineP50": 130,
+      "maxWaitingBackends": 5
+    }
+  },
+  "cost": {
+    "primary": {
+      "seconds": 25.8,
+      "ok": true,
+      "peakVcpus": 2,
+      "vcpuSecondsUpperBound": 32.84,
+      "costScaleUsdUpperBound": 0.00203,
+      "costLaunchUsdUpperBound": 0.00097,
+      "samples": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        2,
+        2,
+        2,
+        2
+      ]
+    },
+    "replica": {
+      "seconds": 29.2,
+      "ok": true,
+      "peakVcpus": 1,
+      "vcpuSecondsUpperBound": 31.71,
+      "costScaleUsdUpperBound": 0.00196,
+      "costLaunchUsdUpperBound": 0.00093,
+      "samples": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ]
+    }
+  },
+  "drift": [
+    {
+      "t": "2026-11-11T09:12:00.647Z",
+      "stamp": "e7af9cc732ec",
+      "type": "case",
+      "name": "migrator_owned_table",
+      "beforeFix": {
+        "ok": false,
+        "sqlstate": "42501",
+        "error": "permission denied for table migrator_table"
+      },
+      "afterFix": {
+        "ok": true,
+        "rows": 0
+      },
+      "oldTableAfterFix": {
+        "ok": false,
+        "sqlstate": "42501",
+        "error": "permission denied for table migrator_table"
+      },
+      "note": "read_only grants cover the owner's tables; a different role's new tables need ALTER DEFAULT PRIVILEGES FOR ROLE migrator"
+    },
+    {
+      "t": "2026-11-11T09:12:03.101Z",
+      "stamp": "e7af9cc732ec",
+      "type": "case",
+      "name": "new_schema",
+      "result": {
+        "ok": false,
+        "sqlstate": "42501",
+        "error": "permission denied for schema app2"
+      },
+      "note": "agent_ro was created with --schema app, so a second schema has no USAGE grant"
+    }
+  ],
+  "harden": {
+    "before": {
+      "t": "2026-11-11T09:12:05.926Z",
+      "stamp": "27bfd2716aa1",
+      "type": "before",
+      "publicTempOnDb": true,
+      "publicExecuteRecordTouch": true,
+      "agentRoConnLimit": -1,
+      "agentRoGucs": ""
+    },
+    "after": {
+      "t": "2026-11-11T09:12:06.544Z",
+      "stamp": "27bfd2716aa1",
+      "type": "after",
+      "publicTempOnDb": false,
+      "publicExecuteRecordTouch": false,
+      "agentRoConnLimit": 5,
+      "agentRoGucs": "statement_timeout=30s, lock_timeout=2s, idle_in_transaction_session_timeout=15s"
+    }
+  }
+}

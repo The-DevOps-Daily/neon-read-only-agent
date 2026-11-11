@@ -1,0 +1,26 @@
+# neon CLI version
+$ npx -y neon@9.3.2 --version
+9.3.2
+
+# read_only role, scoped to the app schema
+$ npx -y neon@9.3.2 roles create --project-id shy-bread-81087327 --branch br-green-rain-bdgi2170 --database neondb --name agent_ro --access read_only --schema app --output json
+{
+  "branch_id": "br-green-rain-bdgi2170",
+  "name": "agent_ro",
+  "protected": false,
+  "authentication_method": "password",
+  "created_at": "2026-11-11T07:44:31Z",
+  "updated_at": "2026-11-11T07:44:31Z"
+}
+
+# read_write role, scoped to the app schema
+$ npx -y neon@9.3.2 roles create --project-id shy-bread-81087327 --branch br-green-rain-bdgi2170 --database neondb --name agent_rw --access read_write --schema app --output json
+{
+  "branch_id": "br-green-rain-bdgi2170",
+  "name": "agent_rw",
+  "protected": false,
+  "authentication_method": "password",
+  "created_at": "2026-11-11T07:44:38Z",
+  "updated_at": "2026-11-11T07:44:38Z"
+}
+

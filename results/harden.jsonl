@@ -1,0 +1,3 @@
+{"t":"2026-11-11T09:12:04.593Z","stamp":"27bfd2716aa1","type":"start","project":"shy-bread-81087327"}
+{"t":"2026-11-11T09:12:05.926Z","stamp":"27bfd2716aa1","type":"before","publicTempOnDb":true,"publicExecuteRecordTouch":true,"agentRoConnLimit":-1,"agentRoGucs":""}
+{"t":"2026-11-11T09:12:06.544Z","stamp":"27bfd2716aa1","type":"after","publicTempOnDb":false,"publicExecuteRecordTouch":false,"agentRoConnLimit":5,"agentRoGucs":"statement_timeout=30s, lock_timeout=2s, idle_in_transaction_session_timeout=15s"}
