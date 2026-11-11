@@ -46,6 +46,8 @@ It creates and deletes ONE throwaway Neon project. Every results file is stamped
 - `09-rerun.sh` reuses the matrix runner, which clears `agent_ro`'s `statement_timeout` before it starts. The 30-second default from `schema/harden.sql` is therefore not in place during the re-run. No probe depends on it.
 - `results/discarded/` keeps runs that were replaced, with the reason for each. `verify-stamps` does not read that folder.
 - `num_cpus()` rounds the compute's vCPU limit up to a whole number, so the cost figures are upper bounds.
+- Traces: durable writes (audit rows, large objects, role settings) and `NOTIFY` delivery are checked from an owner session in every setup. Temp tables and session advisory locks are checked inside the probe's own session only on the direct connection (S1). On the MCP setups each `run_sql` is a separate request, so those two traces are recorded from a successful call (a `CREATE TEMP TABLE` that succeeded, a `pg_advisory_lock()` that returned) and are inferences, not observations.
+- `npm run compare` (`scripts/compare-matrix-runs.mjs`) checks the final matrix against the older runs in `results/discarded/`.
 
 See the write-up: TODO(post-url)
 GitHub: TODO(repo-url)

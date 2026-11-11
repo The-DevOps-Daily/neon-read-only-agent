@@ -24,3 +24,14 @@ which stopped the drift stage, and the MCP call now takes a longer timeout for
 the heavy read). Their stamps belong to that older `lib/`, so the final runs in
 `results/` replace them. The matrix outcomes are kept to compare run against
 run.
+
+## Run against run
+
+`node scripts/compare-matrix-runs.mjs` compares the final `results/matrix.jsonl`
+with the two older complete runs, probe by probe (allowed or denied, SQLSTATE,
+outcome). Its output for the published run:
+
+```text
+results/matrix.jsonl (160) vs results/discarded/matrix-pre-lib-fix.jsonl (160): 0 differences
+results/matrix.jsonl (160) vs results/discarded/matrix-run2.jsonl (160): 0 differences
+```

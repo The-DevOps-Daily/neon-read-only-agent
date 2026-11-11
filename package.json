@@ -21,7 +21,8 @@
     "summarize": "node scripts/10-summarize.mjs",
     "verify-stamps": "node scripts/11-verify-stamps.mjs",
     "test": "node --test test/*.test.mjs",
-    "teardown": "node scripts/99-teardown.mjs"
+    "teardown": "node scripts/99-teardown.mjs",
+    "compare": "node scripts/compare-matrix-runs.mjs"
   },
   "dependencies": {
     "@modelcontextprotocol/sdk": "1.22.0",
