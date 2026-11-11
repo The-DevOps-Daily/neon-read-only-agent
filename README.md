@@ -50,7 +50,6 @@ It creates and deletes ONE throwaway Neon project. Every results file is stamped
 - `npm run compare` (`scripts/compare-matrix-runs.mjs`) checks the final matrix against the older runs in `results/discarded/`.
 - A correction to a comment in `schema/harden.sql`: it says NOTIFY and advisory locks are not privilege-controlled. That is true of the `NOTIFY` statement. `pg_notify()` and the advisory-lock functions run on the `EXECUTE` that `PUBLIC` holds on built-in functions; the hardening revokes `EXECUTE` only in the `app` schema. The file is left as it was run, because it is part of every stamp.
 
-See the write-up: TODO(post-url)
-GitHub: TODO(repo-url)
+The write-up, with the results: https://devops-daily.com/posts/neon-read-only-role-agent-probes
 
 MIT License.
